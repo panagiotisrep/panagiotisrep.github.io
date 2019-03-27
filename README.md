@@ -1,4 +1,4 @@
-Hi, I am Panagiotis Repouskos, an aspiring student of GSoC 2019! This are the test results for R the project [Geometric sampling, volume and optimization](https://github.com/rstats-gsoc/gsoc2019/wiki/Geometric-sampling,-volume-and-optimization)
+Hi, I am Panagiotis Repouskos, an aspiring student of GSoC 2019! These are the test results for R the project [Geometric sampling, volume and optimization](https://github.com/rstats-gsoc/gsoc2019/wiki/Geometric-sampling,-volume-and-optimization)
 
 
 
