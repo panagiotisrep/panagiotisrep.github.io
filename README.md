@@ -1,5 +1,6 @@
 ## Test Results 
-for R the project [Geometric sampling, volume and optimization](https://github.com/rstats-gsoc/gsoc2019/wiki/Geometric-sampling,-volume-and-optimization)
+Hi, I am Panagiotis Repouskos, an aspiring student of GSoC 2019! This are the test results for R the project [Geometric sampling, volume and optimization](https://github.com/rstats-gsoc/gsoc2019/wiki/Geometric-sampling,-volume-and-optimization)
+
 
 
 The test entailed implementing the probabilistic optimization algorithm from [here](http://www.optimization-online.org/DB_FILE/2008/12/2161.pdf) in c++. The code is in this [repository](https://github.com/panagiotisrep/volume_approximation).
@@ -18,7 +19,7 @@ min c*x
 
 s.t. Ax<= b
 
-<br>
+
 
 The idea of the algorithm is to sample the polytope defined by the constraints, pick the "best" candidate from the sample and cut the polytope at that point. Then repeat. 
 
