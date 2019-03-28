@@ -11,7 +11,7 @@ Bellow folows a quick presentation of the problem, the implementation of the alg
 <br>
 
 ### The problem at hand
-The goal is to solve the following linear program:
+The goal is to solve an optimization problem, to minimize a linear function over a convex set, which is more general than linear programming. Our formulation is:
 
 
 min c*x
@@ -23,6 +23,9 @@ s.t. Ax<= b
 The idea of the algorithm is to sample the polytope defined by the constraints, pick the "best" candidate from the sample and cut the polytope at that point. Then repeat. 
 
 
+The bottleneck for this algorithm is the sampling method, both cost and accuracy wise. Currently, I use hit & run, where to select a direction vector, I select a random point on a hypersphere and then multiply that with a matrix (the computational bottleneck). This is the implicit isotropization technique.
+
+
 <br>
 
 
@@ -30,6 +33,10 @@ The algorithm was implemented in
 ### simple_optimization.h
 
 ```c++
+//
+// Created by panagiotis on 24/3/2019.
+//
+
 #ifndef GSOC_SIMPLE_OPTIMIZATION_H
 #define GSOC_SIMPLE_OPTIMIZATION_H
 
@@ -37,8 +44,69 @@ The algorithm was implemented in
 #include "Eigen"
 #include <list>
 #include <vector>
+#include <armadillo>
+#include <complex>
+#include "samplers.h"
+
+
 
 namespace simple_optimization {
+
+    typedef arma::mat MAT;
+    typedef arma::cx_mat CXMAT;
+
+    typedef double NT_MATRIX;
+    typedef Eigen::Matrix<NT_MATRIX, Eigen::Dynamic, Eigen::Dynamic> MT;
+    typedef Eigen::Matrix<NT_MATRIX, Eigen::Dynamic, 1> VT;
+
+
+    ///////////////////////////////////////////////////////////////
+    /// Some functions to transfer data - between eigen - armadillo
+    //////
+
+
+    void matFromEigenMatrix(MT &m, MAT &A) {
+        long d = m.rows();
+        A.set_size(d, d);
+
+        for (int i = 0; i < d; i++) {
+            for (int j = 0; j < d; j++) {
+                A(i, j) = m(i, j);
+            }
+        }
+    }
+
+    void matrixFromMAT(MT &m, CXMAT A) {
+        long d = A.n_rows;
+        m.resize(d, d);
+
+        for (int i = 0; i < d; i++) {
+            for (int j = 0; j < d; j++) {
+                m(i, j) = std::real(A(i, j));
+            }
+        }
+
+    }
+
+
+    template<typename NT>
+    void vecFromVector(VT &v, std::vector<NT> vector) {
+        v.resize(vector.size());
+        int i = 0;
+
+        for (typename std::vector<NT>::iterator pit = vector.begin(); pit != vector.end(); pit++)
+            v(i++) = *pit;
+    }
+
+    template<class Point>
+    void pointFromVT(VT &v, Point &point) {
+        int i = 0;
+
+        for (typename std::vector<typename Point::FT>::iterator pit = point.iter_begin();
+             pit != point.iter_end(); pit++)
+            *pit = v(i++);
+    }
+
 
     /**
      * Computes the dot product of the vector v with point
@@ -70,11 +138,9 @@ namespace simple_optimization {
      * @param c a vector holding the coefficients of the object function
      * @param polytope An instance of Hpolytope
      * @param point Where to create the cutting plane
-     * @param epsilon how much to "move back" the cutting plane
-     * @param speedup if we want to move back the cutting plane
      */
     template<class Point, typename NT>
-    void cutPolytope(std::vector<NT> c, HPolytope<Point> &polytope, Point point, NT epsilon, bool speedup) {
+    void cutPolytope(std::vector<NT> &c, HPolytope<Point> &polytope, Point &point) {
 
         unsigned int dim = polytope.dimension();
 
@@ -88,7 +154,7 @@ namespace simple_optimization {
         }
 
         //add  < c,  point >  in last row of b
-        NT _b = dot_product(c, point) + epsilon;
+        NT _b = dot_product(c, point);
         polytope.put_vec_coeff(polytope.num_of_hyperplanes() - 1, _b);
     }
 
@@ -103,7 +169,7 @@ namespace simple_optimization {
      * @return point wich minimizes the object function
      */
     template<class Point, typename NT>
-    Point getMinimizingPoint(std::vector<NT> c, std::list<Point> randPoints) {
+    Point getMinimizingPoint(std::vector<NT> &c, std::list<Point> &randPoints) {
         typename std::list<Point>::iterator it = randPoints.begin();
 
         NT temp, min;
@@ -125,6 +191,62 @@ namespace simple_optimization {
     }
 
     /**
+     * Find the point that second minimizes the object function out of a list of points
+     *
+     * @tparam Point class Point
+     * @tparam NT The numeric type
+     * @param c a vector holding the coefficients of the object function
+     * @param randPoints a list of points
+     * @return a pair of points which minimize the object function
+     */
+    template<class Point, typename NT>
+    std::pair<Point, Point> getPairMinimizingPoint(std::vector<NT> &c, std::list<Point> &randPoints) {
+        typename std::list<Point>::iterator it = randPoints.begin();
+
+        NT temp, min, min2;
+        Point minPoint = *it;
+
+        min = dot_product<Point, NT>(c, *it);
+
+        it++;
+
+
+        min2 = dot_product<Point, NT>(c, *it);
+        Point minPoint2 = *it;
+
+        if (min2 > min)
+            minPoint2 = *it;
+        else {
+            temp = min2;
+            min2 = min;
+            min = temp;
+            Point tempPoint = minPoint;
+            minPoint = minPoint2;
+            minPoint2 = tempPoint;
+        }
+
+        it++;
+
+        for (; it != randPoints.end(); it++) {
+            temp = dot_product<Point, NT>(c, *it);
+
+            if (temp < min2) {
+                if (temp > min) {
+                    min2 = temp;
+                    minPoint2 = *it;
+                } else {
+                    min2 = min;
+                    min = temp;
+                    minPoint2 = minPoint;
+                    minPoint = *it;
+                }
+            }
+        }
+
+        return std::pair<Point, Point>(minPoint, minPoint2);
+    }
+
+    /**
      * Adds one more hyperplane in the polytope. The values of the new polytope are not initialized.
      *
      * @tparam Point class Point
@@ -132,7 +254,7 @@ namespace simple_optimization {
      * @param polytope an instance of class HPolytope
      */
     template<class Point, typename NT>
-    void addRowInPolytope(HPolytope<Point>& polytope) {
+    void addRowInPolytope(HPolytope<Point> &polytope) {
         typedef Eigen::Matrix<NT, Eigen::Dynamic, Eigen::Dynamic> MT;
         typedef Eigen::Matrix<NT, Eigen::Dynamic, 1> VT;
 
@@ -152,10 +274,113 @@ namespace simple_optimization {
      * @param verbose whether or not to print
      * @param msg a message to print
      */
-    void print(bool verbose, const char* msg) {
+    void print(bool verbose, const char *msg) {
         if (verbose)
-            std::cout << msg << std:: endl;
+            std::cout << msg << std::endl;
     }
+
+
+    /**
+     * Returns the arithmetic mean of points
+     *
+     * @tparam Point Class Point
+     * @tparam NT The numeric type
+     * @param c c a vector holding the coefficients of the object function
+     * @param points A collection of points
+     * @param pointsPair a pair of point that will participate in the mean
+     */
+    template<class Point, typename NT>
+    Point getArithmeticMean(std::vector<NT> &c, std::list<Point> &points, std::pair<Point, Point> &pointsPair) {
+        class std::list<Point>::iterator it = points.begin();
+
+        NT b = dot_product(c, pointsPair.second);
+
+        Point point(it->dimension());
+        point = point + pointsPair.first;
+
+        int i = 1;
+        for (; it != points.end(); it++)
+            if (dot_product(c, *it) <= b) {
+                point = point + *it;
+                i++;
+            }
+
+        point = point * (1.0 / (double) i);
+
+        return point;
+    }
+
+
+    /**
+     * Computes the quantites y = (1/N) * Sum {p | p in points}
+     * and Y = (1/N) * Sum [(p-y)* (p -y)^T], p in points
+     *
+     * These quantities will be used to set the direction vector of hit and run
+     *
+     * @tparam Point class Point
+     * @tparam NT The numeric type
+     * @param points a collection of points
+     * @return sqrt(Y) and the arithmetic mean of the points inside the polytope
+     */
+    template<class Point, typename NT>
+    std::pair<Point, MT>
+    getIsotropicQuantities(std::vector<NT> &c, std::list<Point> &points, std::pair<Point, Point> &pointsPair) {
+        class std::list<Point>::iterator it = points.begin();
+        int dim = it->dimension();
+
+        NT lastEstimation = dot_product(c, pointsPair.second);
+
+        Point point(it->dimension());
+        point = point + pointsPair.first;
+
+        VT _point = point.getEigenVector();
+
+        std::vector<VT> _points;
+        VT _c;
+        vecFromVector(_c, c);
+
+        for (it = points.begin(); it != points.end(); it++)
+            _points.push_back(it->getEigenVector());
+
+        VT _rest;
+        VT _sum;
+        _rest.setZero(dim);
+        _sum.setZero(dim);
+
+        int pointsInSum = 1;
+        for (std::vector<VT>::iterator vit = _points.begin(); vit != _points.end(); vit++) {
+            if (_c.dot(*vit) <= lastEstimation) {
+                _sum = _sum + *vit;
+                pointsInSum++;
+            } else
+                _rest = _rest + *vit;
+        }
+
+        _point = (_point + _sum) / (double) pointsInSum;
+        pointFromVT(_point, point);
+        VT _y(dim);
+
+        _y = (_sum + _rest) / (double) _points.size();
+
+
+        // compute Y
+        MT _Y(dim, dim);
+        _Y.setZero();
+
+        for (std::vector<VT>::iterator vit = _points.begin(); vit != _points.end(); vit++) {
+            *vit = *vit - _y;
+            _Y = _Y + (*vit * vit->transpose());
+        }
+
+        _Y = _Y / (double) _points.size();
+
+        MAT A;
+        matFromEigenMatrix(_Y, A);
+        matrixFromMAT(_Y, sqrtmat(A));
+
+        return std::pair<Point, MT>(point, _Y);
+    }
+
 
     /**
      * Solve the linear program
@@ -178,7 +403,8 @@ namespace simple_optimization {
      */
     template<class Parameters, class Point, typename NT>
     std::pair<Point, NT>
-    simple_optimization(std::vector<NT> c, HPolytope<Point> polytope, Parameters parameters, const NT error, const unsigned int maxSteps, bool speedup) {
+    simple_optimization(std::vector<NT> c, HPolytope<Point> polytope, Parameters parameters, const NT error,
+                        const unsigned int maxSteps, bool speedup) {
 
         bool verbose = parameters.verbose;
         unsigned int rnum = parameters.m;
@@ -190,37 +416,53 @@ namespace simple_optimization {
 
         // get an internal point so you can sample
         std::pair<Point, NT> InnerBall = polytope.ComputeInnerBall();
-        Point feasiblePoint = InnerBall.first;
+        Point interiorPoint = InnerBall.first;
+
+        std::pair<Point, Point> interiorPoints;
 
         // sample points from polytope
         std::list<Point> randPoints;
-        rand_point_generator(polytope, feasiblePoint, rnum, walk_len, randPoints, parameters);
+
+        // the points at the end of the segments of hit and run
+        std::list<Point> endPoints;
+
+        rand_point_generator(polytope, interiorPoint, rnum, walk_len, randPoints, endPoints, parameters);
 
         // find where to cut the polytope
-        feasiblePoint = getMinimizingPoint(c, randPoints);
+        interiorPoints = getPairMinimizingPoint(c, randPoints);
 
         // add one more row in polytope, where we will store the current cutting plane
-        addRowInPolytope<Point, NT> (polytope);
+        addRowInPolytope<Point, NT>(polytope);
 
         // cut the polytope
-        cutPolytope<Point, NT>(c, polytope, feasiblePoint, error, speedup);
+        cutPolytope<Point, NT>(c, polytope, interiorPoint);
 
-        NT min = dot_product(c, feasiblePoint);
+        NT min = dot_product(c, interiorPoint);
 
         do {
-            if (!speedup) {
-                InnerBall = polytope.ComputeInnerBall();
-                feasiblePoint = InnerBall.first;
-            }
+            // delete elements from previous rep
+            randPoints.clear();
 
             // sample points from polytope
-            std::list<Point> randPoints;
-            rand_point_generator(polytope, feasiblePoint, rnum, walk_len, randPoints, parameters);
+            if (speedup) {
+                // use this point as the next starting point for sampling
+                interiorPoint = getArithmeticMean(c, endPoints, interiorPoints);
+
+                endPoints.clear();
+                rand_point_generator(polytope, interiorPoint, rnum, walk_len, randPoints, endPoints, parameters);
+            } else {
+                // matrix isotropic will be multiplied witch each direction vector of hit and run
+
+                std::pair<Point, MT> isotropic = getIsotropicQuantities<Point, NT>(c, endPoints, interiorPoints);
+                endPoints.clear();
+                smart_rand_point_generator(polytope, isotropic.first, rnum, walk_len, randPoints, endPoints, parameters,
+                                           isotropic.second);
+            }
 
             // find where to cut the polytope
-            feasiblePoint = getMinimizingPoint(c, randPoints);
+            interiorPoints = getPairMinimizingPoint(c, randPoints);
 
-            NT newMin = dot_product(c, feasiblePoint);
+            NT newMin = dot_product(c, interiorPoints.first);
 
             // check for distance between successive estimations
             NT distance = newMin - min;
@@ -229,12 +471,11 @@ namespace simple_optimization {
             if (distance < error) {
                 min = newMin;
                 break;
-            }
-            else
+            } else
                 min = newMin;
 
             // add the cutting plane
-            cutPolytope<Point, NT>(c, polytope, feasiblePoint, error, speedup);
+            cutPolytope<Point, NT>(c, polytope, interiorPoints.second);
 
             step++;
 
@@ -243,7 +484,7 @@ namespace simple_optimization {
 
         if (verbose) std::cout << "Ended at " << step << " steps" << std::endl;
 
-        return std::pair<Point, NT>(feasiblePoint, min);
+        return std::pair<Point, NT>(interiorPoints.first, min);
     }
 
 }
@@ -271,6 +512,7 @@ And this main was used to test it:
 #include "sample_only.h"
 #include "exact_vols.h"
 #include "simple_optimization.h"
+#include "solve_lp.h"
 
 //////////////////////////////////////////////////////////
 /**** MAIN *****/
@@ -292,7 +534,7 @@ readFromFile(const char *const *argv, bool verbose, HPolytope<point<Cartesian<do
 void printResult(Result result, double time);
 
 bool loadProgramFromStream(std::istream &is, HPolytope<Point> &HP, std::vector<NT>& objectFunction);
-
+NT solveWithLPSolve(HPolytope<Point>& HP, std::vector<NT> objectFunction);
 
 int main(const int argc, const char **argv) {
 
@@ -303,6 +545,7 @@ int main(const int argc, const char **argv) {
     int dimensinon, numOfExperinments = 1, walkLength = 10, numOfRandomPoints = 16, nsam = 100, numMaxSteps = 100;
     NT e = 1;
     bool speedup = false;
+    bool uselpSolve = false;
 
     bool verbose = false,
             rand_only = false,
@@ -329,11 +572,16 @@ int main(const int argc, const char **argv) {
     Hpolytope HP;
 
     NT delta = -1.0, error = 0.2;
-    NT distance = 0.000001;
+    NT distance = 0.0001;
 
     //parse command line input vars
     for (int i = 1; i < argc; ++i) {
         bool correct = false;
+
+        if (!strcmp(argv[i], "-lpsolve")) {
+            uselpSolve = true;
+            correct = true;
+        }
 
         if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help")) {
             printHelpMessage();
@@ -391,8 +639,22 @@ int main(const int argc, const char **argv) {
     }
 
 
+
     // Timings
     double tstart, tstop;
+
+    if (uselpSolve) {
+        std::cout << "Using lp_solve" << std::endl;
+
+        tstart = (double) clock() / (double) CLOCKS_PER_SEC;
+
+        NT min = solveWithLPSolve(HP, objectFunction);
+
+        tstop = (double) clock() / (double) CLOCKS_PER_SEC;
+
+        std::cout << "Min is " << min << std::endl << "Computed at: " << tstop - tstart << " secs" << std::endl;
+        return 0;
+    }
 
     /* CONSTANTS */
     //error in hit-and-run bisection of P
@@ -400,7 +662,7 @@ int main(const int argc, const char **argv) {
     const NT err_opt = 0.0000001;
 
 
-    // If no file specified construct a default polytope
+    // If no file specified
     if (!file) {
         std::cout << "You must specify a file - type -h for help" << std::endl;
         exit(-2);
@@ -471,6 +733,7 @@ readFromFile(const char *const *argv, bool verbose, HPolytope<point<Cartesian<do
     std::ifstream inp;
     inp.open(argv[++i], std::ios_base::in);
     bool retval = loadProgramFromStream(inp, HP, objectFunction);
+    inp.close();
     n = HP.dimension();
 //    HP.print();
     return retval;
@@ -504,7 +767,7 @@ bool loadProgramFromStream(std::istream &is, HPolytope<Point> &HP, std::vector<N
     if (std::getline(is, line, '\n').eof())
         return false;
 
-    int dim = std::stoi(line.substr(sz));
+    int dim = std::stoi(line);
 
 
     //read object function
@@ -530,8 +793,8 @@ bool loadProgramFromStream(std::istream &is, HPolytope<Point> &HP, std::vector<N
     typedef Eigen::Matrix<NT,Eigen::Dynamic,Eigen::Dynamic> MT;
     typedef Eigen::Matrix<NT,Eigen::Dynamic,1> VT;
 
-    VT b = HP.get_vec();
-    MT A = HP.get_mat();
+    VT b;
+    MT A;
 
     A.resize(constraintsNum, dim);
     b.resize(constraintsNum);
@@ -561,5 +824,44 @@ bool loadProgramFromStream(std::istream &is, HPolytope<Point> &HP, std::vector<N
 
     HP.init(dim, A, b);
     return true;
+}
+
+NT solveWithLPSolve(HPolytope<Point>& HP, std::vector<NT> objectFunction) {
+    lprec *lp;
+    unsigned int dim = HP.dimension();
+
+    REAL row[1 + dim]; /* must be 1 more then number of columns ! */
+
+    /* Create a new LP model */
+    lp = make_lp(0, dim);
+
+    typedef Eigen::Matrix<NT,Eigen::Dynamic,Eigen::Dynamic> MT;
+    typedef Eigen::Matrix<NT,Eigen::Dynamic,1> VT;
+
+    VT b = HP.get_vec();
+    MT A = HP.get_mat();
+    std::vector<NT>::iterator it = objectFunction.begin();
+
+    for (int j=1 ; j<=dim ; j++)
+        row[j] = *(it++); //j must start at 1
+
+    set_obj_fn(lp, row);
+
+    set_add_rowmode(lp, TRUE);
+
+    for (int i=0 ; i<A.rows() ; i++) {
+        for (int j=1 ; j<=dim ; j++)
+            row[j] = A(i, j-1); //j must start at 1
+
+        add_constraint(lp, row, LE, b(i)); /* constructs the row: +v_1 +2 v_2 >= 3 */
+    }
+
+    set_add_rowmode(lp, FALSE);
+    set_minim(lp);
+
+    solve(lp);
+    NT ret = get_objective(lp);
+    delete_lp(lp);
+    return ret;
 }
 ```
