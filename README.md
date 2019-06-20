@@ -14,7 +14,7 @@
 </ul>
 
 <h3>Second Week</h3>
-    I decided to keep data on one pdf. From now on, I will update <a href="https://www.dropbox.com/s/65vrb3828t82ub2/Randomized%20cutting%20plane.pdf?dl=0">this one</a>
+    I decided to keep data on one pdf. From now on, I will update <a href="https://www.dropbox.com/s/65vrb3828t82ub2/Randomized%20cutting%20plane.pdf?dl=0">this one</a>.
 <ul>
     <li>I tried a different random walk, the Hit & Run with coordinate directions. With this new walk and a little of smart programming, I could save lots of computations. There was an impressive speed up!</li>
     <li>I implemented a heuristic for choosing a better direction vector (implicit isotropization).</li>
@@ -32,5 +32,6 @@
 
 <ul>
     <li>There is still work on the escape step, at which we try to move towards the Chebyshev center. Needs testing and if it works I can make it work a bit faster.</li>
-    <li><Another idea for an escape step is the billiard walk. It works fine. The advantage of the work till now, is that it scales very well with the dimension of the polytope (testing it on problems, which lpsolve needs hours to solve!). Must test to see which escape step works better and when, because they appear to be a bottleneck, so I must use them rarely.</li>
+    <li>Another idea for an escape step is the billiard walk. It works fine. The advantage of the work till now, is that it scales very well with the dimension of the polytope (testing it on problems, which lpsolve needs hours to solve!). Must test to see which escape step works better and when, because they appear to be a bottleneck, so I must use them rarely.</li>
+        
 </ul>
