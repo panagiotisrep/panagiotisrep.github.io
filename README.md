@@ -14,7 +14,9 @@
 </ul>
 
 <h3>Second Week</h3>
-    I decided to keep data on one pdf. From now on, I will update <a href="https://www.dropbox.com/s/65vrb3828t82ub2/Randomized%20cutting%20plane.pdf?dl=0">this one</a>.
+
+I decided to keep data on one pdf. From now on, I will update <a  href="https://www.dropbox.com/s/65vrb3828t82ub2/Randomized%20cutting%20plane.pdf?dl=0">this one</a>.
+
 <ul>
     <li>I tried a different random walk, the Hit & Run with coordinate directions. With this new walk and a little of smart programming, I could save lots of computations. There was an impressive speed up!</li>
     <li>I implemented a heuristic for choosing a better direction vector (implicit isotropization).</li>
