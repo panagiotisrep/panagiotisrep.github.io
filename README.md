@@ -87,6 +87,6 @@ I decided to keep data on one pdf. From now on, I will update <a  href="https://
 <h3>Week 11</h3>
 
 <ul>
-    <li>Implemented the simulated annealing algorithm for LP/SDP.</li>
-    <li>Searching for various heuristics.</li>
+    <li>Implemented the simulated annealing algorithm for LP.</li>
+    <li>Searching / implementing for various heuristics.</li>
 </ul>
