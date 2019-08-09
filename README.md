@@ -38,6 +38,12 @@ I decided to keep data on one pdf. From now on, I will update <a  href="https://
         
 </ul>
 
+<h3>Week 5</h3>
+
+<ul>
+    <li>Further experimentation with the billiard walk. Tried to combinethe billiard walk with the direction produced by trying to reach the Chebyshev center.</li>
+    <li>Tested to see how the algorithm performs in many dimensions (up to 1500).</li>
+</ul>
 
 <h3>Week 6</h3>
 
