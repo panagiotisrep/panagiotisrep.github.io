@@ -90,3 +90,12 @@ I decided to keep data on one pdf. From now on, I will update <a  href="https://
     <li>Implemented the simulated annealing algorithm for LP.</li>
     <li>Searching / implementing for various heuristics.</li>
 </ul>
+
+<h3>Week 12</h3>
+
+<ul>
+    <li>Implemented the simulated annealing algorithm for SDP.</li>
+    <li>Imported and tested new implementation of Billiard walk for the Randomized cutting plane method for LP.</li>
+    <li>Run tests of all methods to determine optimal parameters.</li>
+    <li>Changed stopping criterion on all methods into a sliding window.</li>
+</ul>
