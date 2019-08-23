@@ -1,9 +1,9 @@
 theme: jekyll-theme-leap-day
 
-baseurl: https://panagiotisrep.github.io
+baseurl: "https://panagiotisrep.github.io"
 
-title: Panagiotis Repouskos
-description: My Personal Site
+title: "Panagiotis Repouskos"
+description: "My Personal Site"
 show_downloads: true
 
 github:
