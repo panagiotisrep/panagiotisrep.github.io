@@ -1,5 +1,6 @@
 theme: jekyll-theme-leap-day
 
-# show_downloads: true
+show_downloads: true
+
 github:
   gsoc2019:  "gsoc2019/gsoc2019"
