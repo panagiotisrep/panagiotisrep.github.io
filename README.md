@@ -1,5 +1,5 @@
 <h1>About Me</h1>
-<h2>Hi<h2>
+<h3>Hi</h3>
 <ul>
   <li> My name is Panagiotis Repouskos,</li>
   <li> I curently Live in Athens, Greece and</li>
@@ -8,5 +8,5 @@
 
 <br>
 
-<h2>Contact Info</h2>
+<h3>Contact Info</h3>
 e-mail: panagiotisrep [at] gmail [dot] com
