@@ -13,4 +13,4 @@ e-mail: panagiotisrep [at] gmail [dot] com
 
 <br>
 <h3>Resume</h3>
-You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.github.io/blob/master/bio.pdf">pdf</a>.
+You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/bio.pdf">pdf</a>.
