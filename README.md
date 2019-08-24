@@ -3,7 +3,7 @@ Hi,
 <ul>
   <li> My name is Panagiotis Repouskos,</li>
   <li> I curently Live in Athens, Greece and</li>
-  <li> study for a Masters Degree in Theoretical Computer Science, in the Department of Informatics and Telecommunications, University of Athens</li>
+  <li> study for a Masters Degree in Theoretical Computer Science, in the Department of Informatics and Telecommunications, University of Athens.</li>
 </ul>
 
 <h1>Contact Info</h1>
