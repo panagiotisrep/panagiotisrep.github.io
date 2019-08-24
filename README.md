@@ -1,10 +1,12 @@
 <h1>About Me</h1>
-Hi,
+<h2>Hi<h2>
 <ul>
   <li> My name is Panagiotis Repouskos,</li>
   <li> I curently Live in Athens, Greece and</li>
   <li> study for a Masters Degree in Theoretical Computer Science, in the Department of Informatics and Telecommunications, University of Athens.</li>
 </ul>
 
-<h1>Contact Info</h1>
+<br>
+
+<h2>Contact Info</h2>
 e-mail: panagiotisrep [at] gmail [dot] com
