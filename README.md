@@ -1,5 +1,4 @@
 <h1>About Me</h1>
-<h3>Hello!</h3>
 <ul>
   <li> My name is Panagiotis Repouskos,</li>
   <li> I curently Live in Athens, Greece and</li>
@@ -8,9 +7,9 @@
 
 <br>
 
-<h3>Contact Info</h3>
+<h1>Contact Info</h1>
 e-mail: panagiotisrep [at] gmail [dot] com
 
 <br>
-<h3>Resume</h3>
+<h1>Resume</h1>
 You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/bio.pdf">pdf</a>.
