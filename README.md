@@ -9,7 +9,6 @@ style="width:250px;float:right;margin-left:1px;margin-bottom:1px;margin-right:0p
 
 <br>
 
-# f
 
 <h1>Contact Info</h1>
 e-mail: panagiotisrep [at] gmail [dot] com
