@@ -9,3 +9,10 @@ show_downloads: true
 
 github:
   gsoc2019:  "gsoc2019/gsoc2019"
+
+
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+  auto_ids:       true
+  toc_levels:     1..3
