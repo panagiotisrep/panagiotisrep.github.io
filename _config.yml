@@ -1,5 +1,5 @@
 theme: jekyll-theme-leap-day
-
+markdown: kramdown
 include: gsoc2019/gsoc2019.md
 
 
