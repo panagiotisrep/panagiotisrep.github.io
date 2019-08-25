@@ -1,5 +1,8 @@
 theme: jekyll-theme-leap-day
 
+include: gsoc2019/gsoc2019.md
+
+
 title: "Panagiotis Repouskos"
 description: "My corner on the Web"
 show_downloads: true
