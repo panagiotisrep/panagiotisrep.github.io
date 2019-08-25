@@ -1,10 +1,11 @@
 theme: jekyll-theme-leap-day
 markdown: kramdown
 include: 
-  - gsoc2019/
-  - gsoc2019
-  - gsoc2019/gsoc2019.md
-
+  -gsoc2019/
+  -gsoc2019
+  -gsoc2019/gsoc2019.md
+  -gsoc2019.md
+  
 relative_permalinks: false
 title: "Panagiotis Repouskos"
 description: "My corner on the Web"
