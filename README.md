@@ -1,4 +1,6 @@
 <h1>About Me</h1>
+<img src="https://user-images.githubusercontent.com/6207728/63648724-87b10000-c73c-11e9-9960-924fb904f9cb.jpg"
+style="width:50px;"/>
 <ul>
   <li> My name is Panagiotis Repouskos,</li>
   <li> I curently Live in Athens, Greece and</li>
