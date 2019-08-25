@@ -5,7 +5,7 @@ include:
   - gsoc2019
   - gsoc2019/gsoc2019.md
 
-
+relative_permalinks: false
 title: "Panagiotis Repouskos"
 description: "My corner on the Web"
 show_downloads: true
