@@ -16,3 +16,11 @@ e-mail: panagiotisrep [at] gmail [dot] com
 <br>
 <h1>Resume</h1>
 You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/bio.pdf">pdf</a>.
+
+<br>
+# A Picture
+The best photo I' ve ever taken was the in Archaeological Site of Eleusis, my hometown.
+
+<img src="https://user-images.githubusercontent.com/6207728/63726130-0d2fcf80-c865-11e9-973f-d3a8749f886c.jpg">
+
+In case you want <a href="https://photos.google.com/share/AF1QipPMIlQdmyAp7P7WHIl4MYH5WDD5N0uycA-Dkk58oAiIx2Q6_ilrs8RpmCno6E_R5Q?key=cFVWVTZJbF9xWm5QbVl0N3c2QnZwNmhaSDhQS3ZB">more</a>.
