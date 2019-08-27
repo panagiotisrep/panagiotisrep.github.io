@@ -20,8 +20,8 @@ You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.githu
 <br>
 <h1>Links</h1>
 <ul>
-  <li>>a href="https://github.com/panagiotisrep" target="_blank">Github Profile</a></li>
-  <li>>a href="https://panagiotisrep.github.io/gsoc2019/gsoc2019" target="_blank">GSoC 2019 Project 'Sampling Methods for Convex Optimization'</a></li>
+  <li><a href="https://github.com/panagiotisrep" target="_blank">Github Profile</a></li>
+  <li><a href="https://panagiotisrep.github.io/gsoc2019/gsoc2019" target="_blank">GSoC 2019 Project 'Sampling Methods for Convex Optimization'</a></li>
 </ul>
   
 <br>
