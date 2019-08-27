@@ -18,6 +18,13 @@ e-mail: panagiotisrep [at] gmail [dot] com
 You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/bio.pdf">pdf</a>.
 
 <br>
+<h1>Links</h1>
+<ul>
+  <li>>a href="https://github.com/panagiotisrep" target="_blank">Github Profile</a></li>
+  <li>>a href="https://panagiotisrep.github.io/gsoc2019/gsoc2019" target="_blank">GSoC 2019 Project 'Sampling Methods for Convex Optimization'</a></li>
+</ul>
+  
+<br>
 <h1>A Picture</h1>
 The best photo I' ve ever taken was in the Archaeological Site of Eleusis, my hometown.
 
