@@ -28,9 +28,9 @@ You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.githu
 <h1>A Picture</h1>
 The best photo I' ve ever taken (Archaeological Site of Eleusis, my hometown).
 
-<br>
+
 
 <img src="https://user-images.githubusercontent.com/6207728/63726130-0d2fcf80-c865-11e9-973f-d3a8749f886c.jpg">
 
-<br>
+
 In case you want <a href="https://photos.google.com/share/AF1QipPMIlQdmyAp7P7WHIl4MYH5WDD5N0uycA-Dkk58oAiIx2Q6_ilrs8RpmCno6E_R5Q?key=cFVWVTZJbF9xWm5QbVl0N3c2QnZwNmhaSDhQS3ZB" target="_blank">more</a>.
