@@ -2,9 +2,9 @@
 <img src="https://user-images.githubusercontent.com/6207728/63648724-87b10000-c73c-11e9-9960-924fb904f9cb.jpg"
 style="width:250px;float:right;margin-left:1px;margin-bottom:1px;margin-right:0px;padding-right:0ox;"/>
 <ul>
-  <li> My name is <b>Panagiotis Repouskos</b>,</li>
-  <li> I curently Live in <b>Athens, Greece</b> and</li>
-  <li> <b>study for a Masters Degree in Theoretical Computer Science</b>, in the Department of Informatics and Telecommunications, University of Athens.</li>
+  <li style="margin-bottom:4px;"> My name is <b>Panagiotis Repouskos</b>,</li>
+  <li style="margin-bottom:4px;"> I curently Live in <b>Athens, Greece</b> and</li>
+  <li style="margin-bottom:4px;"> <b>study for a Masters Degree in Theoretical Computer Science</b>, in the Department of Informatics and Telecommunications, University of Athens.</li>
 </ul>
 
 <br>
