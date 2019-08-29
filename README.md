@@ -26,7 +26,7 @@ You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.githu
   
 <br>
 <h1>A Picture</h1>
-The best photo I' ve ever (Archaeological Site of Eleusis, my hometown).
+The best photo I' ve ever taken (Archaeological Site of Eleusis, my hometown).
 
 <br>
 
