@@ -4,7 +4,7 @@ style="width:250px;float:right;margin-left:1px;margin-bottom:1px;margin-right:0p
 <ul>
   <li style="margin-bottom:4px;"> My name is <b>Panagiotis Repouskos</b>,</li>
   <li style="margin-bottom:4px;"> I curently Live in <b>Athens, Greece</b> and</li>
-  <li style="margin-bottom:4px;"> <b>study for a Masters Degree in Theoretical Computer Science</b>, in the Department of Informatics and Telecommunications, University of Athens.</li>
+  <li style="margin-bottom:4px;"> study on a <b>MSc in Theoretical Computer Science</b>, in the Department of Informatics and Telecommunications, University of Athens.</li>
 </ul>
 
 <br>
