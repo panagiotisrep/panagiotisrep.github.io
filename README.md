@@ -22,7 +22,7 @@ You can download a <a href="https://github.com/panagiotisrep/panagiotisrep.githu
 <ul>
   <li><a href="https://github.com/panagiotisrep" target="_blank">Github Profile</a></li>
   <li><a href="https://panagiotisrep.github.io/gsoc2019/gsoc2019" target="_blank">GSoC 2019 Project 'Sampling Methods for Convex Optimization'</a></li>
-  <li>The <a href="https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/ACAC2019.pdf">slides</a> of my talk on <a href="http://www.corelab.ntua.gr/acac19/" target="_blank">ACAC'19</a>, with title 'Sampling Methods for Convex Optimization'.</li>
+  <li><a href="https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/ACAC2019.pdf">Slides</a> of my talk on <a href="http://www.corelab.ntua.gr/acac19/" target="_blank">ACAC'19</a> (title 'Sampling Methods for Convex Optimization')</li>
 </ul>
   
 <br>
