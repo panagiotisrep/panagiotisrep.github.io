@@ -2,6 +2,7 @@
 layout: single
 author_profile: true
 classes: wide
+title: My corner in the web
 ---
 
 
