@@ -12,11 +12,11 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    :  "dark" #"air" , "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Panagiotis Repouskos"
+title                    : "Panagiotis' Personal Webpage"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : &name "Panagiotis Repouskos"
@@ -128,6 +128,9 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/panagiotisrep"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/panagiotisrepouskos"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -150,6 +153,9 @@ footer:
     - label: "Bitbucket"
       icon: "fab fa-fw fa-bitbucket"
       # url:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/panagiotisrepouskos"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url:
