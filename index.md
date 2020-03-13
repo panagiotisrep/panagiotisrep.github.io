@@ -10,7 +10,7 @@ My name is Panagiotis Repouskos. I am a MSc student in Theoretical Computer Scie
 
 ## Short Bio
  - Current, MSc in Theoretical Computer Science, in the Department of Informatics and Telecommunications, University of Athens.
- - 2018, BSc. from Department of Informatics and Telecommunications, University of Athens.\
+ - 2018, BSc. from Department of Informatics and Telecommunications, University of Athens.<br>
    Bachelor's Thesis: The Dataflow Computational Model and its Evolution, Supervisor: Prof. Panagiotis Rondogiannis.
 
 
@@ -18,7 +18,7 @@ My name is Panagiotis Repouskos. I am a MSc student in Theoretical Computer Scie
 A complete <a href="https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/cv.pdf">CV</a>.
 
 ## Links
- - [Slides](https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/ACAC2019.pdf) of my talk on 'Sampling Methods for Convex Optimization',\
+ - [Slides](https://github.com/panagiotisrep/panagiotisrep.github.io/raw/master/ACAC2019.pdf) of my talk on 'Sampling Methods for Convex Optimization',<br>
    14th Athens Colloqium On Algorithms And Complexity (<a href="http://www.corelab.ntua.gr/acac19/" target="_blank">ACAC'19</a>).
 
 
