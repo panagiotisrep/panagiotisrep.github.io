@@ -20,7 +20,7 @@ A complete <a href="https://drive.google.com/open?id=1SnqvTpuMrdRnVJkeg63nnrk8tH
 ## Links
  - [Slides](https://drive.google.com/open?id=1NSj7sxY37DflPMU3KLDQfFmM54_jrshg) of my talk on 'Sampling Methods for Convex Optimization',<br>
    14th Athens Colloqium On Algorithms And Complexity (<a href="http://www.corelab.ntua.gr/acac19/" target="_blank">ACAC'19</a>).
- - Participation in [Google Summer of Code 2019](https://summerofcode.withgoogle.com/archive/2019/projects/5081309804756992).
+ - Intern in [Google Summer of Code 2019](https://summerofcode.withgoogle.com/archive/2019/projects/5081309804756992).
 
 
 ## A Picture
