@@ -6,4 +6,16 @@
 <url>
 <loc>http://localhost:4000/</loc>
 </url>
+<url>
+<loc>http://localhost:4000/ACAC2019.pdf</loc>
+<lastmod>2020-02-18T20:31:36+02:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/cv.pdf</loc>
+<lastmod>2020-02-18T20:31:36+02:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/gsoc2019/Randomized%20cutting%20plane.pdf</loc>
+<lastmod>2020-02-18T20:31:36+02:00</lastmod>
+</url>
 </urlset>
