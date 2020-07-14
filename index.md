@@ -24,7 +24,9 @@ Currently working on a semidefinite programming solver, via the use of randomize
 about random walks and optimization. The C++ code is in this [branch](https://github.com/panagiotisrep/volume_approximation/tree/simulated-annealing-spectrahedra) of a fork of the [VolEsti package](https://github.com/GeomScale/volume_approximation).
 
 ## Links
- - Accepted (distinguished) [ISSAC 2020 poster](https://issac-conference.org/2020/posters.php). The [pdf](https://drive.google.com/file/d/1aEzGC6G094zSKm7jeQNy7NvZm7syixPK/view?usp=sharing) and [presentation](https://drive.google.com/file/d/1GocES2647jutuEawNOWvpElzcFfjBvNk/view?usp=sharing) slides.
+ - Sampling the feasible sets of SDPs and volume approximation:<br>
+  Accepted (distinguished) [ISSAC 2020 poster](https://issac-conference.org/2020/posters.php).<br>
+  The [pdf](https://drive.google.com/file/d/1aEzGC6G094zSKm7jeQNy7NvZm7syixPK/view?usp=sharing) and [presentation](https://drive.google.com/file/d/1GocES2647jutuEawNOWvpElzcFfjBvNk/view?usp=sharing) slides.
  - [Slides](https://drive.google.com/open?id=1NSj7sxY37DflPMU3KLDQfFmM54_jrshg) of my talk on 'Sampling Methods for Convex Optimization',<br>
    14th Athens Colloqium On Algorithms And Complexity (<a href="http://www.corelab.ntua.gr/acac19/" target="_blank">ACAC'19</a>).
  - Intern in [Google Summer of Code 2019](https://summerofcode.withgoogle.com/archive/2019/projects/5081309804756992).
