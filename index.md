@@ -24,7 +24,7 @@ Currently working on a semidefinite programming solver, via the use of randomize
 about random walks and optimization. The C++ code is in this [branch](https://github.com/panagiotisrep/volume_approximation/tree/simulated-annealing-spectrahedra) of a fork of the [VolEsti package](https://github.com/GeomScale/volume_approximation).
 
 ## Publications
- - <b>Sampling the feasible sets of SDPs and volume approximation</b><a href="https://hal.inria.fr/hal-02572792/"><img src="https://user-images.githubusercontent.com/6207728/87831684-d99ad100-c88c-11ea-837f-ce7077a5e2a6.png" height="30" /></a> <br>
+ - <b>Sampling the feasible sets of SDPs and volume approximation</b><a href="https://hal.inria.fr/hal-02572792/"><img src="https://user-images.githubusercontent.com/6207728/87831684-d99ad100-c88c-11ea-837f-ce7077a5e2a6.png" height="30px" /></a> <br>
   ISSAC '20 SIGSAM Communications in Computer Algebra. ACM, 2020. (Distinguished poster award).<br>
 
 ## Links
