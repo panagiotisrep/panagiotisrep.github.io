@@ -5,36 +5,35 @@ classes: wide
 title: Panagiotis Repouskos
 ---
 
-My name is Panagiotis Repouskos. I am a MSc student in Theoretical Computer Science at the Department of Informatics and Telecommunications, University of Athens.
+My name is Panagiotis Repouskos. I have graduated from the Department of Informatics and Telecommunications,
+University of Athens. I recently obtained a MSc degree student in Theoretical Computer Science, in the same department.
 
+I am currently working fulltime at Intralot, while being constantly involved in research projects with
+Athena Research Center, mainly involving computational geometry, data structures and linear algebra.
 
-## Short Bio
- - Current, MSc in Theoretical Computer Science, in the Department of Informatics and Telecommunications, University of Athens.
- - 2018, BSc. from Department of Informatics and Telecommunications, University of Athens.<br>
-   Bachelor's Thesis: [The Dataflow Computational Model and its Evolution](https://drive.google.com/open?id=1tqwhY1nYHUK_m0pTrzxVcNT0vzBRRnNF), Supervisor: Prof. Panagiotis Rondogiannis.
+Here is my <a href="https://drive.google.com/file/d/1W2lfmgMuH7hWGnb_CH8OmbCJgkJzFL69/view?usp=drive_link">CV</a>.
 
-A complete <a href="https://drive.google.com/open?id=1SnqvTpuMrdRnVJkeg63nnrk8tHLflpQg">CV</a>.
+## Skills
+ - C++ expert
+ - Geometric Data Structures
+ - Computational Geometry
 
-#### Research Interests
- - Geometric Random Walks
- - Convex Optimization
- - Polynomial Eigenvalue Problems
-
-Currently working on a semidefinite programming solver, via the use of randomized algorithms and geometric random walks. You can see some high level [slides](https://drive.google.com/file/d/1LlkT4pUDbmAjMSipWNjFAbQxg7SlPupI/view?usp=sharing)
-about random walks and optimization. The C++ code is in this [branch](https://github.com/panagiotisrep/volume_approximation/tree/simulated-annealing-spectrahedra) of a fork of the [VolEsti package](https://github.com/GeomScale/volume_approximation).
 
 ## Publications
- - <b>Sampling the feasible sets of SDPs and volume approximation</b> <a href="https://hal.inria.fr/hal-02572792/"><img src="https://user-images.githubusercontent.com/6207728/87832388-95103500-c88e-11ea-98d6-e6190d1fb1d6.png" style="height:20px;"></a> <br>
-  ISSAC '20 SIGSAM Communications in Computer Algebra. ACM, 2020. (Distinguished poster award).<br>
+  - <b>GeoCluster: A latent variable generative model for continuous space geometric clustering</b>, 
+    Minas Dioletis, Ioannis Z. Emiris, George Ioannakis, Evanthia Papadopoulou, Thomas Pappas, Panagiotis Repouskos, et al.,
+    EuroCG2024 ‐ 40th European Workshop on Computational Geometry     <a href="https://eurocg2024.math.uoi.gr/data/uploads/paper_64.pdf"><img src="https://user-images.githubusercontent.com/6207728/87832388-95103500-c88e-11ea-98d6-e6190d1fb1d6.png" style="height:20px;"></a>
+  - <b>Efficient sampling in spectrahedra and volume approximation</b>,
+    Apostolos Chalkis, Ioannis Emiris, Vissarion Fisikopoulos, Panagiotis Repouskos, Elias Tsigaridas,
+    Linear Algebra and its Applications, 2022, 648, pp.205‐232     <a href="https://inria.hal.science/hal-03659476/document"><img src="https://user-images.githubusercontent.com/6207728/87832388-95103500-c88e-11ea-98d6-e6190d1fb1d6.png" style="height:20px;"></a>
+  - <b>Sampling the feasible sets of SDPs and volume approximation</b>,
+    Apostolos Chalkis, Vissarion Fisikopoulos, Panagiotis Repouskos, and Elias Tsigaridas,
+    ACM Commun. Comput. Algebra 54, 3 (September 2020), 114–118 <a href="https://hal.inria.fr/hal-02572792/"><img src="https://user-images.githubusercontent.com/6207728/87832388-95103500-c88e-11ea-98d6-e6190d1fb1d6.png" style="height:20px;"></a>
 
-## Links
-- [Slides](https://drive.google.com/open?id=1NSj7sxY37DflPMU3KLDQfFmM54_jrshg) of my talk on 'Sampling Methods for Convex Optimization',<br>
-   14th Athens Colloqium On Algorithms And Complexity (<a href="http://www.corelab.ntua.gr/acac19/" target="_blank">ACAC'19</a>).
-- Intern in [Google Summer of Code 2019](https://summerofcode.withgoogle.com/archive/2019/projects/5081309804756992).
 
+<br>
 
-## A Picture
-In the Archaeological Site of Eleusis.
+#### A Picture In the Archaeological Site of Eleusis.
 
 
 
